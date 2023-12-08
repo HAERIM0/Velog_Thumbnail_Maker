@@ -1,12 +1,16 @@
+import Link from "next/link";
 import * as S from "./style";
 
 const Header = () => {
   return (
     <S.HeaderContainer>
       <S.Title>Velog_Maker</S.Title>
-      <div>
+      <Link
+        href="https://github.com/HAERIM0/Velog_Thumbnail_Maker"
+        target="_blank"
+      >
         <S.Icon src="/githubicon.png" alt="githubicon" />
-      </div>
+      </Link>
     </S.HeaderContainer>
   );
 };
