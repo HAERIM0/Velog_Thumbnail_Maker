@@ -12,9 +12,9 @@ export const SideBarBox = styled.div`
   background-color: #eeeeee;
 `;
 
-export const Title = styled.p`
+export const Title = styled.label`
   font-size: 18px;
   font-weight: 600;
 
-  padding-left: 20px;
+  padding-left: 25px;
 `;
