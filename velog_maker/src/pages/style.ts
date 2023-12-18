@@ -34,6 +34,6 @@ export const Title = styled.h3`
 `;
 
 export const SubTitle = styled.div<{ isBottom: boolean }>`
-  margin-bottom: ${(props) => (props.isBottom ? "60px" : "25px")};
+  margin-bottom: ${(props) => (props.isBottom ? "60px" : "30px")};
   font-size: 24px;
 `;

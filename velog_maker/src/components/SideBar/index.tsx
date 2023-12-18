@@ -1,16 +1,30 @@
 import { useTitle } from "../../hooks/useTitle";
 import TitleInput from "../TitleInput";
 import * as S from "./style";
+import SelectButton from "../Button/SelectButton";
 
 const SideBar = () => {
-  const { TitleData, handleTitleChange } = useTitle();
+  const { handleTitleChange } = useTitle();
   return (
     <S.SideBarContainer>
       <S.SideBarBox>
-        <div>
+        <S.SideBarList>
           <S.Title>배경</S.Title>
-        </div>
-        <div>
+          <SelectButton width={330} padding={true}>
+            이미지 업로드
+          </SelectButton>
+          <SelectButton width={330} padding={true}>
+            랜덤 그라디언트
+          </SelectButton>
+          <S.SelectBox>
+            <SelectButton width={160} padding={true}>
+              랜덤 그라디언트
+            </SelectButton>
+            <SelectButton width={160} padding={false}>
+              랜덤 그라디언트
+            </SelectButton>
+          </S.SelectBox>
+
           <S.Title>제목</S.Title>
           <TitleInput
             id="Title"
@@ -18,8 +32,7 @@ const SideBar = () => {
             placeholder="제목을 입력하세요"
             onchange={handleTitleChange}
           />
-        </div>
-        <div>
+
           <S.Title>부제목</S.Title>
           <TitleInput
             id="Subtitle"
@@ -27,8 +40,7 @@ const SideBar = () => {
             placeholder="부제목을 입력하세요"
             onchange={handleTitleChange}
           />
-        </div>
-        <div>
+
           <S.Title>분류</S.Title>
           <TitleInput
             id="Category"
@@ -36,13 +48,53 @@ const SideBar = () => {
             placeholder="분류를 입력하세요"
             onchange={handleTitleChange}
           />
-        </div>
-        <div>
           <S.Title>구성요소</S.Title>
-        </div>
-        <div>
+          <SelectButton width={330} padding={true}>
+            제목/부제목/분류
+          </SelectButton>
+          <SelectButton width={330} padding={true}>
+            제목/부제목
+          </SelectButton>
+          <S.SelectBox>
+            <SelectButton width={160} padding={true}>
+              제목/분류
+            </SelectButton>
+            <SelectButton width={160} padding={false}>
+              제목
+            </SelectButton>
+          </S.SelectBox>
           <S.Title>텍스트 스타일</S.Title>
-        </div>
+          <SelectButton width={330} padding={true}>
+            텍스트 색상 반전
+          </SelectButton>
+
+          <S.SelectBox>
+            <SelectButton width={160} padding={true}>
+              색상
+            </SelectButton>
+            <SelectButton width={160} padding={false}>
+              그림자
+            </SelectButton>
+          </S.SelectBox>
+          <S.SelectBox>
+            <SelectButton
+              width={160}
+              padding={true}
+              backgroundcolor="#626262"
+              color="white"
+            >
+              초기화
+            </SelectButton>
+            <SelectButton
+              width={160}
+              padding={false}
+              backgroundcolor="#626262"
+              color="white"
+            >
+              다운로드
+            </SelectButton>
+          </S.SelectBox>
+        </S.SideBarList>
       </S.SideBarBox>
     </S.SideBarContainer>
   );

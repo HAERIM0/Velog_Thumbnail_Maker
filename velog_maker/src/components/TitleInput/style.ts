@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const TitleContainer = styled.div`
   padding-left: 25px;
+  margin-bottom: 20px;
 `;
 
 export const TitleInput = styled.input`
