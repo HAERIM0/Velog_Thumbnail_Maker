@@ -4,10 +4,12 @@ import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import { useTitle } from "../hooks/useTitle";
 import { useImgUpload } from "../hooks/useImgUpload";
+import { useBackGroundColor } from "../hooks/useColor";
 
 const Home: NextPage = () => {
   const { TitleData } = useTitle();
   const { imgSrc } = useImgUpload();
+  const { getRandomColor, onChangeColor } = useBackGroundColor();
 
   return (
     <>
@@ -15,7 +17,11 @@ const Home: NextPage = () => {
       <S.MainContainer>
         <S.PreviewContainer>
           <S.PreviewBox>
-            {imgSrc ? <S.Img src={imgSrc} /> : <S.Preview />}
+            {imgSrc ? (
+              <S.Img src={imgSrc} />
+            ) : (
+              <S.Preview style={{ backgroundColor: `${getRandomColor()} ` }} />
+            )}
           </S.PreviewBox>
           <S.TitleBox>
             <S.Title>{TitleData.Title}</S.Title>
@@ -23,7 +29,7 @@ const Home: NextPage = () => {
             <S.SubTitle isBottom={false}>{TitleData.Category}</S.SubTitle>
           </S.TitleBox>
         </S.PreviewContainer>
-        <SideBar />
+        <SideBar onChangeColor={onChangeColor} />
       </S.MainContainer>
     </>
   );

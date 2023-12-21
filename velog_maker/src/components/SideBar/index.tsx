@@ -4,9 +4,14 @@ import * as S from "./style";
 import SelectButton from "../Button/SelectButton";
 import { useImgUpload } from "../../hooks/useImgUpload";
 
-const SideBar = () => {
+interface Props {
+  onChangeColor: () => void;
+}
+
+const SideBar = ({ onChangeColor }: Props) => {
   const { handleTitleChange } = useTitle();
   const { onClickImg, ImgRef, onUploadImg } = useImgUpload();
+
   return (
     <S.SideBarContainer>
       <S.SideBarBox>
@@ -26,11 +31,15 @@ const SideBar = () => {
             랜덤 그라디언트
           </SelectButton>
           <S.SelectBox>
-            <SelectButton width={160} padding={true}>
-              랜덤 그라디언트
+            <SelectButton
+              width={160}
+              padding={true}
+              onclick={() => onChangeColor()}
+            >
+              랜덤 단색
             </SelectButton>
             <SelectButton width={160} padding={false}>
-              랜덤 그라디언트
+              단색
             </SelectButton>
           </S.SelectBox>
 

@@ -1,4 +1,3 @@
-import { LegacyRef } from "react";
 import * as S from "./style";
 
 interface Props {
