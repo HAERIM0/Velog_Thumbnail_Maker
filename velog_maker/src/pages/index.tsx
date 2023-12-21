@@ -9,7 +9,8 @@ import { useBackGroundColor } from "../hooks/useColor";
 const Home: NextPage = () => {
   const { TitleData } = useTitle();
   const { imgSrc } = useImgUpload();
-  const { getRandomColor, onChangeColor } = useBackGroundColor();
+  const { getRandomColor, onChangeColor, onChangeGradient } =
+    useBackGroundColor();
 
   return (
     <>
@@ -20,7 +21,7 @@ const Home: NextPage = () => {
             {imgSrc ? (
               <S.Img src={imgSrc} />
             ) : (
-              <S.Preview style={{ backgroundColor: `${getRandomColor()} ` }} />
+              <S.Preview style={{ background: `${getRandomColor()}` }} />
             )}
           </S.PreviewBox>
           <S.TitleBox>
@@ -29,7 +30,10 @@ const Home: NextPage = () => {
             <S.SubTitle isBottom={false}>{TitleData.Category}</S.SubTitle>
           </S.TitleBox>
         </S.PreviewContainer>
-        <SideBar onChangeColor={onChangeColor} />
+        <SideBar
+          onChangeColor={onChangeColor}
+          onChangeGradient={onChangeGradient}
+        />
       </S.MainContainer>
     </>
   );

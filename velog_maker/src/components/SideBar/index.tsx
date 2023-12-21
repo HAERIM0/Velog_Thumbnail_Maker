@@ -6,9 +6,10 @@ import { useImgUpload } from "../../hooks/useImgUpload";
 
 interface Props {
   onChangeColor: () => void;
+  onChangeGradient: () => void;
 }
 
-const SideBar = ({ onChangeColor }: Props) => {
+const SideBar = ({ onChangeColor, onChangeGradient }: Props) => {
   const { handleTitleChange } = useTitle();
   const { onClickImg, ImgRef, onUploadImg } = useImgUpload();
 
@@ -27,7 +28,11 @@ const SideBar = ({ onChangeColor }: Props) => {
           <SelectButton width={330} padding={true} onclick={onClickImg}>
             이미지 업로드
           </SelectButton>
-          <SelectButton width={330} padding={true}>
+          <SelectButton
+            width={330}
+            padding={true}
+            onclick={() => onChangeGradient()}
+          >
             랜덤 그라디언트
           </SelectButton>
           <S.SelectBox>
