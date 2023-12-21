@@ -3,9 +3,7 @@ import { useRecoilState } from "recoil";
 import { TitleStateAtom } from "../store/Title.store";
 
 export const useTitle = () => {
-  const [TitleData, setTitleData] = useRecoilState<object | any>(
-    TitleStateAtom
-  );
+  const [TitleData, setTitleData] = useRecoilState(TitleStateAtom);
 
   const handleTitleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

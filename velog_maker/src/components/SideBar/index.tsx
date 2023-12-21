@@ -3,6 +3,8 @@ import TitleInput from "../TitleInput";
 import * as S from "./style";
 import SelectButton from "../Button/SelectButton";
 import { useImgUpload } from "../../hooks/useImgUpload";
+import { ChromePicker } from "react-color";
+import { useState } from "react";
 
 interface Props {
   onChangeColor: () => void;
@@ -12,6 +14,7 @@ interface Props {
 const SideBar = ({ onChangeColor, onChangeGradient }: Props) => {
   const { handleTitleChange } = useTitle();
   const { onClickImg, ImgRef, onUploadImg } = useImgUpload();
+  const [displayColorPicker, setDisplayColorPicker] = useState<boolean>(false);
 
   return (
     <S.SideBarContainer>
@@ -47,7 +50,7 @@ const SideBar = ({ onChangeColor, onChangeGradient }: Props) => {
               단색
             </SelectButton>
           </S.SelectBox>
-
+          <ChromePicker></ChromePicker>
           <S.Title>제목</S.Title>
           <TitleInput
             id="Title"

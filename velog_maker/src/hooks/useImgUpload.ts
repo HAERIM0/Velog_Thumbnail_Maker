@@ -4,7 +4,9 @@ import { useRecoilState } from "recoil";
 
 export const useImgUpload = () => {
   const ImgRef: MutableRefObject<HTMLInputElement | null> = useRef(null);
-  const [imgSrc, setImgSrc] = useRecoilState<string | any>(ImgSrcAtom);
+  const [imgSrc, setImgSrc] = useRecoilState<string | ArrayBuffer | null>(
+    ImgSrcAtom
+  );
 
   const onClickImg = () => {
     if (ImgRef.current) {
