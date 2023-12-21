@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
-export const PreviewBox = styled.div`
+export const PreviewContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
   width: 100%;
+`;
+
+export const PreviewBox = styled.div`
+  position: relative;
 `;
 export const Preview = styled.div`
   display: flex;
@@ -29,11 +33,28 @@ export const MainContainer = styled.div`
   height: 90vh;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.div`
   font-size: 54px;
+  font-weight: 700;
+
+  margin-bottom: 25px;
 `;
 
 export const SubTitle = styled.div<{ isBottom: boolean }>`
-  margin-bottom: ${(props) => (props.isBottom ? "60px" : "30px")};
+  margin-bottom: ${(props) => (props.isBottom ? "90px" : "-55px")};
   font-size: 24px;
+`;
+
+export const TitleBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+
+  margin-top: 50px;
+`;
+
+export const Img = styled.img`
+  width: 768px;
+  height: 402px;
 `;

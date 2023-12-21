@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const ButtonContainer = styled.div<{ padding: boolean }>`
   padding-left: ${(props) => (props.padding ? "25px" : "0")};
-
-  cursor: pointer;
 `;
 export const SelectButton = styled.button<{ color?: boolean }>`
   height: 40px;

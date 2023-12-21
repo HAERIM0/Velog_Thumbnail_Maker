@@ -2,15 +2,24 @@ import { useTitle } from "../../hooks/useTitle";
 import TitleInput from "../TitleInput";
 import * as S from "./style";
 import SelectButton from "../Button/SelectButton";
+import { useImgUpload } from "../../hooks/useImgUpload";
 
 const SideBar = () => {
   const { handleTitleChange } = useTitle();
+  const { onClickImg, ImgRef, onUploadImg } = useImgUpload();
   return (
     <S.SideBarContainer>
       <S.SideBarBox>
         <S.SideBarList>
           <S.Title>배경</S.Title>
-          <SelectButton width={330} padding={true}>
+          <input
+            type="file"
+            style={{ display: "none" }}
+            ref={ImgRef}
+            onChange={(e) => onUploadImg(e)}
+          />
+
+          <SelectButton width={330} padding={true} onclick={onClickImg}>
             이미지 업로드
           </SelectButton>
           <SelectButton width={330} padding={true}>
