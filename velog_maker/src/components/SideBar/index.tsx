@@ -10,12 +10,14 @@ interface Props {
   onChangeColor: () => void;
   onChangeGradient: () => void;
   handleChangeColor: () => void;
+  handleChangeShadow: () => void;
 }
 
 const SideBar = ({
   onChangeColor,
   onChangeGradient,
   handleChangeColor,
+  handleChangeShadow,
 }: Props) => {
   const { handleTitleChange } = useTitle();
   const { onClickImg, ImgRef, onUploadImg } = useImgUpload();
@@ -122,7 +124,11 @@ const SideBar = ({
             <SelectButton width={160} padding={true}>
               색상
             </SelectButton>
-            <SelectButton width={160} padding={false}>
+            <SelectButton
+              width={160}
+              padding={false}
+              onclick={handleChangeShadow}
+            >
               그림자
             </SelectButton>
           </S.SelectBox>

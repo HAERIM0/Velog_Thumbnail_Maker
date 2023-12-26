@@ -5,7 +5,8 @@ import useBooleanToggle from "./useBooleanToggle";
 
 export const useTitle = () => {
   const [TitleData, setTitleData] = useRecoilState(TitleStateAtom);
-  const [titleChange, ToggleTitleChange] = useBooleanToggle(false);
+  const [titleChange, ToggleTitleChange] = useBooleanToggle(true);
+  const [titleShadow, ToggleTitleShadow] = useBooleanToggle(true);
 
   const handleTitleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,10 +20,16 @@ export const useTitle = () => {
     ToggleTitleChange();
   };
 
+  const handleChangeShadow = () => {
+    ToggleTitleShadow();
+  };
+
   return {
     handleTitleChange,
     TitleData,
     titleChange,
     handleChangeColor,
+    handleChangeShadow,
+    titleShadow,
   };
 };

@@ -7,7 +7,13 @@ import { useImgUpload } from "../hooks/useImgUpload";
 import { useBackGroundColor } from "../hooks/useColor";
 
 const Home: NextPage = () => {
-  const { TitleData, titleChange, handleChangeColor } = useTitle();
+  const {
+    TitleData,
+    titleChange,
+    handleChangeColor,
+    titleShadow,
+    handleChangeShadow,
+  } = useTitle();
   const { imgSrc } = useImgUpload();
   const { getRandomColor, onChangeColor, onChangeGradient } =
     useBackGroundColor();
@@ -28,11 +34,21 @@ const Home: NextPage = () => {
             )}
           </S.PreviewBox>
           <S.TitleBox>
-            <S.Title ColorReversal={titleChange}>{TitleData.Title}</S.Title>
-            <S.SubTitle ColorReversal={titleChange} isBottom={true}>
+            <S.Title ColorReversal={titleChange} Shadow={titleShadow}>
+              {TitleData.Title}
+            </S.Title>
+            <S.SubTitle
+              ColorReversal={titleChange}
+              isBottom={true}
+              Shadow={titleShadow}
+            >
               {TitleData.Subtitle}
             </S.SubTitle>
-            <S.SubTitle ColorReversal={titleChange} isBottom={false}>
+            <S.SubTitle
+              ColorReversal={titleChange}
+              isBottom={false}
+              Shadow={titleShadow}
+            >
               {TitleData.Category}
             </S.SubTitle>
           </S.TitleBox>
@@ -41,6 +57,7 @@ const Home: NextPage = () => {
           handleChangeColor={handleChangeColor}
           onChangeColor={onChangeColor}
           onChangeGradient={onChangeGradient}
+          handleChangeShadow={handleChangeShadow}
         />
       </S.MainContainer>
     </>
