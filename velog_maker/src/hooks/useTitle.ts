@@ -1,10 +1,11 @@
 import { useCallback, useState } from "react";
 import { useRecoilState } from "recoil";
 import { TitleStateAtom } from "../store/Title.store";
+import useBooleanToggle from "./useBooleanToggle";
 
 export const useTitle = () => {
   const [TitleData, setTitleData] = useRecoilState(TitleStateAtom);
-  const [titleChange, setTitleChange] = useState<boolean>(true);
+  const [titleChange, ToggleTitleChange] = useBooleanToggle(false);
 
   const handleTitleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +16,7 @@ export const useTitle = () => {
   );
 
   const handleChangeColor = () => {
-    setTitleChange(!titleChange);
+    ToggleTitleChange();
   };
 
   return {
