@@ -4,17 +4,28 @@ import * as S from "./style";
 import SelectButton from "../Button/SelectButton";
 import { useImgUpload } from "../../hooks/useImgUpload";
 import { ChromePicker } from "react-color";
-import { useState } from "react";
+import { useBackGroundColor } from "../../hooks/useColor";
 
 interface Props {
   onChangeColor: () => void;
   onChangeGradient: () => void;
+  handleChangeColor: () => void;
 }
 
-const SideBar = ({ onChangeColor, onChangeGradient }: Props) => {
+const SideBar = ({
+  onChangeColor,
+  onChangeGradient,
+  handleChangeColor,
+}: Props) => {
   const { handleTitleChange } = useTitle();
   const { onClickImg, ImgRef, onUploadImg } = useImgUpload();
-  const [displayColorPicker, setDisplayColorPicker] = useState<boolean>(false);
+  const {
+    PickerClose,
+    PickerOpen,
+    displayColorPicker,
+    randomColor,
+    handleChangeComplete,
+  } = useBackGroundColor();
 
   return (
     <S.SideBarContainer>
@@ -46,11 +57,24 @@ const SideBar = ({ onChangeColor, onChangeGradient }: Props) => {
             >
               랜덤 단색
             </SelectButton>
-            <SelectButton width={160} padding={false}>
+            <SelectButton width={160} padding={false} onclick={PickerOpen}>
               단색
             </SelectButton>
           </S.SelectBox>
-          <ChromePicker></ChromePicker>
+
+          {displayColorPicker ? (
+            <>
+              <button onClick={PickerClose}>dff</button>
+              <ChromePicker
+                color={randomColor}
+                onChange={handleChangeComplete}
+                // onChangeComplete={(color) => {
+                //   handleChangeComplete(color);
+                // }}
+              ></ChromePicker>
+            </>
+          ) : null}
+
           <S.Title>제목</S.Title>
           <TitleInput
             id="Title"
@@ -90,7 +114,7 @@ const SideBar = ({ onChangeColor, onChangeGradient }: Props) => {
             </SelectButton>
           </S.SelectBox>
           <S.Title>텍스트 스타일</S.Title>
-          <SelectButton width={330} padding={true}>
+          <SelectButton width={330} padding={true} onclick={handleChangeColor}>
             텍스트 색상 반전
           </SelectButton>
 

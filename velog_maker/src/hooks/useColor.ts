@@ -2,7 +2,8 @@ import { useState } from "react";
 
 export const useBackGroundColor = () => {
   const [randomColor, setRandomColor] = useState<string>("");
-  console.log(randomColor);
+  const [displayColorPicker, setDisplayColorPicker] = useState<boolean>(false);
+
   const onChangeColor = () => {
     const newColor = randomRGB;
     setRandomColor(newColor);
@@ -11,6 +12,11 @@ export const useBackGroundColor = () => {
   const onChangeGradient = () => {
     const newColors = randomGradient;
     setRandomColor(newColors);
+  };
+
+  const handleChangeComplete = (newColor: any) => {
+    setRandomColor(newColor);
+    console.log(newColor);
   };
 
   const randomRGB = () => {
@@ -27,6 +33,13 @@ export const useBackGroundColor = () => {
     return `linear-gradient(${color1}, ${color2})`;
   };
 
+  const PickerOpen = () => {
+    setDisplayColorPicker(!displayColorPicker);
+  };
+  const PickerClose = () => {
+    setDisplayColorPicker(false);
+  };
+
   const getRandomColor = () => {
     return randomColor;
   };
@@ -34,5 +47,11 @@ export const useBackGroundColor = () => {
     onChangeColor,
     getRandomColor,
     onChangeGradient,
+    PickerOpen,
+    PickerClose,
+    displayColorPicker,
+    randomColor,
+    setRandomColor,
+    handleChangeComplete,
   };
 };

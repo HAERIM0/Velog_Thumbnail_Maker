@@ -33,16 +33,22 @@ export const MainContainer = styled.div`
   height: 90vh;
 `;
 
-export const Title = styled.div`
+export const Title = styled.div<{ ColorReversal: boolean }>`
   font-size: 54px;
   font-weight: 700;
+  color: ${(props) => (props.ColorReversal ? "black" : "white")};
 
   margin-bottom: 25px;
 `;
 
-export const SubTitle = styled.div<{ isBottom: boolean }>`
+export const SubTitle = styled.div<{
+  isBottom: boolean;
+  ColorReversal: boolean;
+}>`
   margin-bottom: ${(props) => (props.isBottom ? "90px" : "-55px")};
+
   font-size: 24px;
+  color: ${(props) => (props.ColorReversal ? "black" : "white")};
 `;
 
 export const TitleBox = styled.div`
