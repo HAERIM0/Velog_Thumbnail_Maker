@@ -1,32 +1,32 @@
 import * as S from "./style";
 
-interface Props {
+interface SelectButtonProps {
   children: React.ReactNode;
   width: number;
-  onclick?: (e: React.FormEvent) => void;
-  padding: boolean;
-  backgroundcolor?: string;
+  padding: number;
+  backgroundColor?: string;
   color?: string;
+  onClick?: (e: React.FormEvent) => void;
 }
 
 const SelectButton = ({
   children,
   width,
-  onclick,
+  onClick,
   padding,
-  backgroundcolor,
+  backgroundColor,
   color,
-}: Props) => {
+}: SelectButtonProps) => {
   return (
     <>
       <S.ButtonContainer padding={padding}>
         <S.SelectButton
           style={{
             width: `${width}px`,
-            backgroundColor: `${backgroundcolor}`,
+            backgroundColor: `${backgroundColor}`,
             color: `${color}`,
           }}
-          onClick={onclick}
+          onClick={onClick}
         >
           {children}
         </S.SelectButton>

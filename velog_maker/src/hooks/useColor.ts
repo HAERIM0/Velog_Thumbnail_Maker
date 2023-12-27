@@ -4,21 +4,6 @@ export const useBackGroundColor = () => {
   const [randomColor, setRandomColor] = useState<string>("");
   const [displayColorPicker, setDisplayColorPicker] = useState<boolean>(false);
 
-  const onChangeColor = () => {
-    const newColor = randomRGB;
-    setRandomColor(newColor);
-  };
-
-  const onChangeGradient = () => {
-    const newColors = randomGradient;
-    setRandomColor(newColors);
-  };
-
-  const handleChangeComplete = (newColor: any) => {
-    setRandomColor(newColor);
-    console.log(newColor);
-  };
-
   const randomRGB = () => {
     const rColor = Math.floor(Math.random() * 256);
     const gColor = Math.floor(Math.random() * 256);
@@ -33,11 +18,14 @@ export const useBackGroundColor = () => {
     return `linear-gradient(${color1}, ${color2})`;
   };
 
-  const PickerOpen = () => {
-    setDisplayColorPicker(!displayColorPicker);
+  const onChangeColor = () => {
+    const newColor = randomRGB();
+    setRandomColor(newColor);
   };
-  const PickerClose = () => {
-    setDisplayColorPicker(false);
+
+  const onChangeGradient = () => {
+    const newColors = randomGradient();
+    setRandomColor(newColors);
   };
 
   const getRandomColor = () => {
@@ -47,11 +35,8 @@ export const useBackGroundColor = () => {
     onChangeColor,
     getRandomColor,
     onChangeGradient,
-    PickerOpen,
-    PickerClose,
     displayColorPicker,
     randomColor,
     setRandomColor,
-    handleChangeComplete,
   };
 };

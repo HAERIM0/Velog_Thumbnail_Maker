@@ -5,7 +5,7 @@ export const SideBarContainer = styled.div`
   justify-content: flex-end;
 `;
 
-export const SideBarBox = styled.div`
+export const SideBarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 380px;
@@ -25,7 +25,7 @@ export const Title = styled.label`
   margin-bottom: 12px;
 `;
 
-export const SideBarList = styled.div`
+export const SideBarItem = styled.div`
   margin-top: 20px;
 `;
 

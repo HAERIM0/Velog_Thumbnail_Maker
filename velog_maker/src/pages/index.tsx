@@ -8,24 +8,21 @@ import { useBackGroundColor } from "../hooks/useColor";
 
 const Home: NextPage = () => {
   const {
-    TitleData,
+    titleData,
     titleChange,
-    handleChangeColor,
     titleShadow,
-    handleChangeShadow,
+    ToggleTitleChange,
+    ToggleTitleShadow,
   } = useTitle();
   const { imgSrc } = useImgUpload();
   const { getRandomColor, onChangeColor, onChangeGradient } =
     useBackGroundColor();
-
-  console.log(getRandomColor());
 
   return (
     <>
       <Header />
       <S.MainContainer>
         <S.PreviewContainer>
-          {/* <div style={{ backgroundColor: `${getRandomColor()}` }}>ggdgd</div> */}
           <S.PreviewBox>
             {imgSrc ? (
               <S.Img src={imgSrc} />
@@ -35,29 +32,29 @@ const Home: NextPage = () => {
           </S.PreviewBox>
           <S.TitleBox>
             <S.Title ColorReversal={titleChange} Shadow={titleShadow}>
-              {TitleData.Title}
+              {titleData.Title}
             </S.Title>
             <S.SubTitle
               ColorReversal={titleChange}
               isBottom={true}
               Shadow={titleShadow}
             >
-              {TitleData.Subtitle}
+              {titleData.Subtitle}
             </S.SubTitle>
             <S.SubTitle
               ColorReversal={titleChange}
               isBottom={false}
               Shadow={titleShadow}
             >
-              {TitleData.Category}
+              {titleData.Category}
             </S.SubTitle>
           </S.TitleBox>
         </S.PreviewContainer>
         <SideBar
-          handleChangeColor={handleChangeColor}
+          handleChangeColor={ToggleTitleChange}
           onChangeColor={onChangeColor}
           onChangeGradient={onChangeGradient}
-          handleChangeShadow={handleChangeShadow}
+          handleChangeShadow={ToggleTitleShadow}
         />
       </S.MainContainer>
     </>

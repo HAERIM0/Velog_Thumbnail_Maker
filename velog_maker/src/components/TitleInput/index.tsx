@@ -1,13 +1,20 @@
+import { InputHTMLAttributes } from "react";
 import * as S from "./style";
 
-interface TitleProps {
+interface TitleInputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   placeholder: string;
   name: string;
   onchange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const TitleInput = ({ id, placeholder, name, onchange }: TitleProps) => {
+const TitleInput = ({
+  id,
+  placeholder,
+  name,
+  onchange,
+  ...props
+}: TitleInputProps) => {
   return (
     <>
       <S.TitleContainer>
@@ -16,6 +23,7 @@ const TitleInput = ({ id, placeholder, name, onchange }: TitleProps) => {
           onChange={onchange}
           id={id}
           name={name}
+          {...props}
         />
       </S.TitleContainer>
     </>

@@ -8,6 +8,7 @@ const Header = () => {
       <Link
         href="https://github.com/HAERIM0/Velog_Thumbnail_Maker"
         target="_blank"
+        rel="noopener noreferrer"
       >
         <S.Icon src="/githubicon.png" alt="githubicon" />
       </Link>
