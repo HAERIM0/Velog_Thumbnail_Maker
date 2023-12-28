@@ -11,8 +11,8 @@ const Home: NextPage = () => {
     titleData,
     titleChange,
     titleShadow,
-    ToggleTitleChange,
-    ToggleTitleShadow,
+    toggleTitleChange,
+    toggleTitleShadow,
   } = useTitle();
   const { imgSrc, onDownloadThumbnail, cardRef } = useImgUpload();
   const { getRandomColor, onChangeColor, onChangeGradient } =
@@ -51,10 +51,10 @@ const Home: NextPage = () => {
           </S.TitleBox>
         </S.PreviewContainer>
         <SideBar
-          handleChangeColor={ToggleTitleChange}
+          onChangeTitleColor={toggleTitleChange}
           onChangeColor={onChangeColor}
           onChangeGradient={onChangeGradient}
-          handleChangeShadow={ToggleTitleShadow}
+          onChangeTitleShadow={toggleTitleShadow}
           onDownloadThumbnail={onDownloadThumbnail}
         />
       </S.MainContainer>

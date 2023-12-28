@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export const useBackGroundColor = () => {
   const [randomColor, setRandomColor] = useState<string>("");
-  const [displayColorPicker, setDisplayColorPicker] = useState<boolean>(false);
 
   const randomRGB = () => {
     const rColor = Math.floor(Math.random() * 256);
@@ -35,8 +34,6 @@ export const useBackGroundColor = () => {
     onChangeColor,
     getRandomColor,
     onChangeGradient,
-    displayColorPicker,
-    randomColor,
     setRandomColor,
   };
 };

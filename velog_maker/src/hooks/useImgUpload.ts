@@ -5,15 +5,15 @@ import * as htmlToImage from "html-to-image";
 import { saveAs } from "file-saver";
 
 export const useImgUpload = () => {
-  const ImgRef: MutableRefObject<HTMLInputElement | null> = useRef(null);
+  const imgRef: MutableRefObject<HTMLInputElement | null> = useRef(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const [imgSrc, setImgSrc] = useRecoilState<string | ArrayBuffer | null>(
     ImgSrcAtom
   );
 
   const onClickImg = () => {
-    if (ImgRef.current) {
-      ImgRef.current.click();
+    if (imgRef.current) {
+      imgRef.current.click();
     }
   };
 
@@ -46,16 +46,12 @@ export const useImgUpload = () => {
       if (blob) {
         saveAs(blob, "card.png");
       }
-
-      // htmlToImage.toBlob(card, options).then((blob: any) => {
-      //   saveAs(blob, "card.png");
-      // });
     }
   };
 
   return {
     onClickImg,
-    ImgRef,
+    imgRef,
     onUploadImg,
     imgSrc,
     onDownloadThumbnail,

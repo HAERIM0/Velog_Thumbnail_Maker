@@ -7,20 +7,20 @@ import { useImgUpload } from "../../hooks/useImgUpload";
 interface SideBarProps {
   onChangeColor: () => void;
   onChangeGradient: () => void;
-  handleChangeColor: () => void;
-  handleChangeShadow: () => void;
+  onChangeTitleColor: () => void;
+  onChangeTitleShadow: () => void;
   onDownloadThumbnail: () => void;
 }
 
 const SideBar = ({
   onChangeColor,
   onChangeGradient,
-  handleChangeColor,
-  handleChangeShadow,
+  onChangeTitleColor,
+  onChangeTitleShadow,
   onDownloadThumbnail,
 }: SideBarProps) => {
   const { handleTitleChange } = useTitle();
-  const { onClickImg, ImgRef, onUploadImg } = useImgUpload();
+  const { onClickImg, imgRef, onUploadImg } = useImgUpload();
 
   return (
     <S.SideBarContainer>
@@ -30,7 +30,7 @@ const SideBar = ({
           <input
             type="file"
             style={{ display: "none" }}
-            ref={ImgRef}
+            ref={imgRef}
             onChange={(e) => onUploadImg(e)}
           />
 
@@ -96,7 +96,7 @@ const SideBar = ({
             </SelectButton>
           </S.SelectBox>
           <S.Title>텍스트 스타일</S.Title>
-          <SelectButton width={330} padding={25} onClick={handleChangeColor}>
+          <SelectButton width={330} padding={25} onClick={onChangeTitleColor}>
             텍스트 색상 반전
           </SelectButton>
 
@@ -104,7 +104,7 @@ const SideBar = ({
             <SelectButton width={160} padding={25}>
               색상
             </SelectButton>
-            <SelectButton width={160} padding={0} onClick={handleChangeShadow}>
+            <SelectButton width={160} padding={0} onClick={onChangeTitleShadow}>
               그림자
             </SelectButton>
           </S.SelectBox>
