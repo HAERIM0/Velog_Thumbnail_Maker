@@ -14,7 +14,7 @@ const Home: NextPage = () => {
     ToggleTitleChange,
     ToggleTitleShadow,
   } = useTitle();
-  const { imgSrc } = useImgUpload();
+  const { imgSrc, onDownloadThumbnail, cardRef } = useImgUpload();
   const { getRandomColor, onChangeColor, onChangeGradient } =
     useBackGroundColor();
 
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
     <>
       <Header />
       <S.MainContainer>
-        <S.PreviewContainer>
+        <S.PreviewContainer ref={cardRef}>
           <S.PreviewBox>
             {imgSrc ? (
               <S.Img src={imgSrc} />
@@ -32,21 +32,21 @@ const Home: NextPage = () => {
           </S.PreviewBox>
           <S.TitleBox>
             <S.Title ColorReversal={titleChange} Shadow={titleShadow}>
-              {titleData.Title}
+              {titleData.title}
             </S.Title>
             <S.SubTitle
               ColorReversal={titleChange}
               isBottom={true}
               Shadow={titleShadow}
             >
-              {titleData.Subtitle}
+              {titleData.subtitle}
             </S.SubTitle>
             <S.SubTitle
               ColorReversal={titleChange}
               isBottom={false}
               Shadow={titleShadow}
             >
-              {titleData.Category}
+              {titleData.category}
             </S.SubTitle>
           </S.TitleBox>
         </S.PreviewContainer>
@@ -55,6 +55,7 @@ const Home: NextPage = () => {
           onChangeColor={onChangeColor}
           onChangeGradient={onChangeGradient}
           handleChangeShadow={ToggleTitleShadow}
+          onDownloadThumbnail={onDownloadThumbnail}
         />
       </S.MainContainer>
     </>

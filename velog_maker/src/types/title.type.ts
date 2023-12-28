@@ -1,5 +1,5 @@
 interface TitleParam {
-  Title: string;
-  Subtitle: string;
-  Category: string;
+  title: string;
+  subtitle: string;
+  category: string;
 }
