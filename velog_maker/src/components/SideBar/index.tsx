@@ -9,6 +9,7 @@ interface SideBarProps {
   onChangeGradient: () => void;
   handleChangeColor: () => void;
   handleChangeShadow: () => void;
+  onDownloadThumbnail: () => void;
 }
 
 const SideBar = ({
@@ -16,6 +17,7 @@ const SideBar = ({
   onChangeGradient,
   handleChangeColor,
   handleChangeShadow,
+  onDownloadThumbnail,
 }: SideBarProps) => {
   const { handleTitleChange } = useTitle();
   const { onClickImg, ImgRef, onUploadImg } = useImgUpload();
@@ -120,6 +122,7 @@ const SideBar = ({
               padding={0}
               backgroundColor="#626262"
               color="white"
+              onClick={onDownloadThumbnail}
             >
               다운로드
             </SelectButton>

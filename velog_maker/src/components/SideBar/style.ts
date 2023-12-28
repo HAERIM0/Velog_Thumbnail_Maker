@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const SideBarContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+
+  margin-top: 55px;
 `;
 
 export const SideBarWrapper = styled.div`
