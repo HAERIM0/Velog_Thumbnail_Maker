@@ -2,7 +2,7 @@ import { MutableRefObject, useRef } from "react";
 import { ImgSrcAtom } from "../store/Img.store";
 import { useRecoilState } from "recoil";
 import * as htmlToImage from "html-to-image";
-import { blob } from "stream/consumers";
+import { saveAs } from "file-saver";
 
 export const useImgUpload = () => {
   const ImgRef: MutableRefObject<HTMLInputElement | null> = useRef(null);
@@ -42,15 +42,23 @@ export const useImgUpload = () => {
         padding: 0,
       };
 
-      htmlToImage.toBlob(card, { filter: filter }).then((blob) => {
-        // saveas
-      });
-      // try{
-      //   const blob = await htmlToImage.toBlob(card,options)
+      const blob = await htmlToImage.toBlob(card, options);
+      if (blob) {
+        saveAs(blob, "card.png");
+      }
 
-      // }
+      // htmlToImage.toBlob(card, options).then((blob: any) => {
+      //   saveAs(blob, "card.png");
+      // });
     }
   };
 
-  return { onClickImg, ImgRef, onUploadImg, imgSrc };
+  return {
+    onClickImg,
+    ImgRef,
+    onUploadImg,
+    imgSrc,
+    onDownloadThumbnail,
+    cardRef,
+  };
 };
