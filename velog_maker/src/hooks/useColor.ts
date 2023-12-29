@@ -17,23 +17,19 @@ export const useBackGroundColor = () => {
     return `linear-gradient(${color1}, ${color2})`;
   };
 
-  const onChangeColor = () => {
-    const newColor = randomRGB();
-    setRandomColor(newColor);
-  };
-
-  const onChangeGradient = () => {
-    const newColors = randomGradient();
-    setRandomColor(newColors);
-  };
-
-  const getRandomColor = () => {
-    return randomColor;
+  const ChangeColor = {
+    onChangeColor: () => {
+      const newColor = randomRGB();
+      setRandomColor(newColor);
+    },
+    onChangeGradient: () => {
+      const newColors = randomGradient();
+      setRandomColor(newColors);
+    },
+    getRandomColor: () => randomColor,
+    setRandomColor,
   };
   return {
-    onChangeColor,
-    getRandomColor,
-    onChangeGradient,
-    setRandomColor,
+    ChangeColor,
   };
 };

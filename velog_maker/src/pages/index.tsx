@@ -15,8 +15,7 @@ const Home: NextPage = () => {
     toggleTitleShadow,
   } = useTitle();
   const { imgSrc, onDownloadThumbnail, cardRef } = useImgUpload();
-  const { getRandomColor, onChangeColor, onChangeGradient } =
-    useBackGroundColor();
+  const { ChangeColor } = useBackGroundColor();
 
   return (
     <>
@@ -27,7 +26,9 @@ const Home: NextPage = () => {
             {imgSrc ? (
               <S.Img src={imgSrc} />
             ) : (
-              <S.Preview style={{ background: `${getRandomColor()}` }} />
+              <S.Preview
+                style={{ background: `${ChangeColor.getRandomColor()}` }}
+              />
             )}
           </S.PreviewBox>
           <S.TitleBox>
@@ -52,8 +53,8 @@ const Home: NextPage = () => {
         </S.PreviewContainer>
         <SideBar
           onChangeTitleColor={toggleTitleChange}
-          onChangeColor={onChangeColor}
-          onChangeGradient={onChangeGradient}
+          onChangeColor={ChangeColor.onChangeColor}
+          onChangeGradient={ChangeColor.onChangeGradient}
           onChangeTitleShadow={toggleTitleShadow}
           onDownloadThumbnail={onDownloadThumbnail}
         />
