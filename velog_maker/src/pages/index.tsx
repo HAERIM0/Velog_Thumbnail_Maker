@@ -5,8 +5,10 @@ import SideBar from "../components/SideBar";
 import { useTitle } from "../hooks/useTitle";
 import { useImgUpload } from "../hooks/useImgUpload";
 import { useBackGroundColor } from "../hooks/useColor";
+import useHideTitle from "../hooks/Common/test";
 
 const Home: NextPage = () => {
+  useHideTitle();
   const {
     titleData,
     titleChange,
@@ -15,7 +17,7 @@ const Home: NextPage = () => {
     toggleTitleShadow,
   } = useTitle();
   const { imgSrc, onDownloadThumbnail, cardRef } = useImgUpload();
-  const { ChangeColor } = useBackGroundColor();
+  const { changeColor } = useBackGroundColor();
 
   return (
     <>
@@ -27,7 +29,7 @@ const Home: NextPage = () => {
               <S.Img src={imgSrc} />
             ) : (
               <S.Preview
-                style={{ background: `${ChangeColor.getRandomColor()}` }}
+                style={{ background: `${changeColor.getRandomColor()}` }}
               />
             )}
           </S.PreviewBox>
@@ -35,6 +37,7 @@ const Home: NextPage = () => {
             <S.Title ColorReversal={titleChange} Shadow={titleShadow}>
               {titleData.title}
             </S.Title>
+
             <S.SubTitle
               ColorReversal={titleChange}
               isBottom={true}
@@ -53,10 +56,12 @@ const Home: NextPage = () => {
         </S.PreviewContainer>
         <SideBar
           onChangeTitleColor={toggleTitleChange}
-          onChangeColor={ChangeColor.onChangeColor}
-          onChangeGradient={ChangeColor.onChangeGradient}
+          onChangeColor={changeColor.onChangeColor}
+          onChangeGradient={changeColor.onChangeGradient}
           onChangeTitleShadow={toggleTitleShadow}
           onDownloadThumbnail={onDownloadThumbnail}
+          setRandomColor={changeColor.setRandomColor}
+          randomColor={changeColor.randomColor}
         />
       </S.MainContainer>
     </>

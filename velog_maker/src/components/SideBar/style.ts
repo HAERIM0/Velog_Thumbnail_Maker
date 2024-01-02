@@ -36,3 +36,8 @@ export const SelectBox = styled.div`
   gap: 10px;
   margin-bottom: 15px;
 `;
+
+export const PopupContainer = styled.div`
+  position: absolute;
+  padding-left: 25px;
+`;

@@ -1,7 +1,9 @@
 import { useState } from "react";
+import useBooleanToggle from "./useBooleanToggle";
 
 export const useBackGroundColor = () => {
   const [randomColor, setRandomColor] = useState<string>("");
+  const [colorPlatte, toggleColorPlatte] = useBooleanToggle(false);
 
   const randomRGB = () => {
     const rColor = Math.floor(Math.random() * 256);
@@ -17,7 +19,11 @@ export const useBackGroundColor = () => {
     return `linear-gradient(${color1}, ${color2})`;
   };
 
-  const ChangeColor = {
+  // const onPlattePopup = () => {
+
+  // }
+
+  const changeColor = {
     onChangeColor: () => {
       const newColor = randomRGB();
       setRandomColor(newColor);
@@ -26,10 +32,14 @@ export const useBackGroundColor = () => {
       const newColors = randomGradient();
       setRandomColor(newColors);
     },
+
     getRandomColor: () => randomColor,
     setRandomColor,
+    randomColor,
   };
   return {
-    ChangeColor,
+    changeColor,
+    colorPlatte,
+    toggleColorPlatte,
   };
 };
