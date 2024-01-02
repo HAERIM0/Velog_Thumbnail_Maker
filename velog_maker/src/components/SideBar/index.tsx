@@ -28,7 +28,7 @@ const SideBar = ({
 }: SideBarProps) => {
   const { handleTitleChange } = useTitle();
   const { onClickImg, imgRef, onUploadImg } = useImgUpload();
-  const { colorPlatte, toggleColorPlatte } = useBackGroundColor();
+  const { colorPalette, toggleColorPalette } = useBackGroundColor();
 
   return (
     <S.SideBarContainer>
@@ -59,11 +59,11 @@ const SideBar = ({
             >
               랜덤 단색
             </SelectButton>
-            <SelectButton width={160} padding={0} onClick={toggleColorPlatte}>
+            <SelectButton width={160} padding={0} onClick={toggleColorPalette}>
               단색
             </SelectButton>
           </S.SelectBox>
-          {colorPlatte ? (
+          {colorPalette ? (
             <S.PopupContainer>
               <HexColorPicker color={randomColor} onChange={setRandomColor} />
             </S.PopupContainer>
