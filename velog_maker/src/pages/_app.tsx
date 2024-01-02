@@ -1,11 +1,14 @@
 import { RecoilRoot } from "recoil";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import PageTemplate from "../components/PageTemplate";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <Component {...pageProps} />
+      <PageTemplate>
+        <Component {...pageProps} />
+      </PageTemplate>
     </RecoilRoot>
   );
 }

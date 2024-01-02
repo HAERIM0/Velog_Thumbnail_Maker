@@ -27,13 +27,9 @@ export const Preview = styled.div`
 export const MainContainer = styled.div`
   display: flex;
 
-  /* align-items: center; */
-
   justify-content: space-between;
 
   width: 100vw;
-
-  /* height: 100vh; */
 `;
 
 export const Title = styled.div<{ ColorReversal: boolean; Shadow: boolean }>`
@@ -60,7 +56,6 @@ export const SubTitle = styled.div<{
 export const TitleBox = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 
   position: absolute;

@@ -15,6 +15,8 @@ interface SideBarProps {
   onDownloadThumbnail: () => void;
   setRandomColor: Dispatch<SetStateAction<string>>;
   randomColor: string;
+  setTitleColorPalette: Dispatch<SetStateAction<string>>;
+  titleColorPalette: string;
 }
 
 const SideBar = ({
@@ -25,8 +27,10 @@ const SideBar = ({
   onDownloadThumbnail,
   setRandomColor,
   randomColor,
+  setTitleColorPalette,
+  titleColorPalette,
 }: SideBarProps) => {
-  const { handleTitleChange } = useTitle();
+  const { handleTitleChange, titlePalette, toggleTitlePalette } = useTitle();
   const { onClickImg, imgRef, onUploadImg } = useImgUpload();
   const { colorPalette, toggleColorPalette } = useBackGroundColor();
 
@@ -108,13 +112,21 @@ const SideBar = ({
             텍스트 색상 반전
           </SelectButton>
           <S.SelectBox>
-            <SelectButton width={160} padding={25}>
+            <SelectButton width={160} padding={25} onClick={toggleTitlePalette}>
               색상
             </SelectButton>
             <SelectButton width={160} padding={0} onClick={onChangeTitleShadow}>
               그림자
             </SelectButton>
           </S.SelectBox>
+          {titlePalette ? (
+            <S.PopupContainer>
+              <HexColorPicker
+                color={titleColorPalette}
+                onChange={setTitleColorPalette}
+              />
+            </S.PopupContainer>
+          ) : null}
           <S.SelectBox>
             <SelectButton
               width={160}
