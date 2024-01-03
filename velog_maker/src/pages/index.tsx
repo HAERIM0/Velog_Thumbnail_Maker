@@ -5,18 +5,20 @@ import SideBar from "../components/SideBar";
 import { useTitle } from "../hooks/useTitle";
 import { useImgUpload } from "../hooks/useImgUpload";
 import { useBackGroundColor } from "../hooks/useColor";
-import useHideTitle from "../hooks/Common/test";
+import Title from "../components/TitlePreview/Title";
+import SubTitle from "../components/TitlePreview/SubTitle";
+import Category from "../components/TitlePreview/Category";
 
 const Home: NextPage = () => {
-  useHideTitle();
   const {
-    titleData,
     titleChange,
     titleShadow,
     toggleTitleChange,
     toggleTitleShadow,
     setTitleColorPalette,
     titleColorPalette,
+    setSelectComponent,
+    selectComponent,
   } = useTitle();
   const { imgSrc, onDownloadThumbnail, cardRef } = useImgUpload();
   const { changeColor } = useBackGroundColor();
@@ -35,32 +37,53 @@ const Home: NextPage = () => {
               />
             )}
           </S.PreviewBox>
-          <S.TitleBox>
-            <S.Title
-              ColorReversal={titleChange}
-              Shadow={titleShadow}
-              style={{ color: `${titleColorPalette}` }}
-            >
-              {titleData.title}
-            </S.Title>
+          <S.TitleContainer>
+            {selectComponent === "all" && (
+              <S.TitleBox Top={180}>
+                <Title
+                  titleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  titleShadow={titleShadow}
+                />
+                <SubTitle
+                  titleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  titleShadow={titleShadow}
+                />
+                <Category
+                  titleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  titleShadow={titleShadow}
+                />
+              </S.TitleBox>
+            )}
 
-            <S.SubTitle
-              ColorReversal={titleChange}
-              isBottom={true}
-              Shadow={titleShadow}
-              style={{ color: `${titleColorPalette}` }}
-            >
-              {titleData.subtitle}
-            </S.SubTitle>
-            <S.SubTitle
-              ColorReversal={titleChange}
-              isBottom={false}
-              Shadow={titleShadow}
-              style={{ color: `${titleColorPalette}` }}
-            >
-              {titleData.category}
-            </S.SubTitle>
-          </S.TitleBox>
+            {selectComponent === "titleCategory" && (
+              <S.TitleBox Top={90}>
+                <Title
+                  titleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  titleShadow={titleShadow}
+                />
+
+                <Category
+                  titleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  titleShadow={titleShadow}
+                />
+              </S.TitleBox>
+            )}
+
+            {selectComponent === "title" && (
+              <>
+                <Title
+                  titleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  titleShadow={titleShadow}
+                />
+              </>
+            )}
+          </S.TitleContainer>
         </S.PreviewContainer>
         <SideBar
           onChangeTitleColor={toggleTitleChange}
@@ -72,6 +95,8 @@ const Home: NextPage = () => {
           randomColor={changeColor.randomColor}
           setTitleColorPalette={setTitleColorPalette}
           titleColorPalette={titleColorPalette}
+          setSelectComponent={setSelectComponent}
+          selectComponent={selectComponent}
         />
       </S.MainContainer>
     </>

@@ -17,6 +17,8 @@ interface SideBarProps {
   randomColor: string;
   setTitleColorPalette: Dispatch<SetStateAction<string>>;
   titleColorPalette: string;
+  setSelectComponent: Dispatch<SetStateAction<string>>;
+  selectComponent: string;
 }
 
 const SideBar = ({
@@ -29,6 +31,7 @@ const SideBar = ({
   randomColor,
   setTitleColorPalette,
   titleColorPalette,
+  setSelectComponent,
 }: SideBarProps) => {
   const { handleTitleChange, titlePalette, toggleTitlePalette } = useTitle();
   const { onClickImg, imgRef, onUploadImg } = useImgUpload();
@@ -95,15 +98,27 @@ const SideBar = ({
             onchange={handleTitleChange}
           />
           <S.Title>구성요소</S.Title>
-          <SelectButton width={330} padding={25}>
+          <SelectButton
+            width={330}
+            padding={25}
+            onClick={() => setSelectComponent("all")}
+          >
             제목/부제목/분류
           </SelectButton>
           <S.SelectBox>
-            <SelectButton width={160} padding={25}>
+            <SelectButton
+              width={160}
+              padding={25}
+              onClick={() => setSelectComponent("titleCategory")}
+            >
               제목/분류
             </SelectButton>
 
-            <SelectButton width={160} padding={0}>
+            <SelectButton
+              width={160}
+              padding={0}
+              onClick={() => setSelectComponent("title")}
+            >
               제목만
             </SelectButton>
           </S.SelectBox>

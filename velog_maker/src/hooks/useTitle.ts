@@ -9,6 +9,7 @@ export const useTitle = () => {
   const [titleShadow, toggleTitleShadow] = useBooleanToggle(true);
   const [titlePalette, toggleTitlePalette] = useBooleanToggle(false);
   const [titleColorPalette, setTitleColorPalette] = useState<string>("");
+  const [selectComponent, setSelectComponent] = useState<string>("all");
 
   const handleTitleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,5 +30,7 @@ export const useTitle = () => {
     toggleTitlePalette,
     titleColorPalette,
     setTitleColorPalette,
+    setSelectComponent,
+    selectComponent,
   };
 };
