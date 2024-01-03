@@ -148,6 +148,7 @@ const SideBar = ({
               padding={25}
               backgroundColor="#626262"
               color="white"
+              onClick={() => window.location.reload()}
             >
               초기화
             </SelectButton>
