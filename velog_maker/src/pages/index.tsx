@@ -5,17 +5,23 @@ import SideBar from "../components/SideBar";
 import { useTitle } from "../hooks/useTitle";
 import { useImgUpload } from "../hooks/useImgUpload";
 import { useBackGroundColor } from "../hooks/useColor";
+import Title from "../components/TitlePreview/Title";
+import SubTitle from "../components/TitlePreview/SubTitle";
+import Category from "../components/TitlePreview/Category";
 
 const Home: NextPage = () => {
   const {
-    titleData,
     titleChange,
     titleShadow,
     toggleTitleChange,
     toggleTitleShadow,
+    setTitleColorPalette,
+    titleColorPalette,
+    setSelectComponent,
+    selectComponent,
   } = useTitle();
   const { imgSrc, onDownloadThumbnail, cardRef } = useImgUpload();
-  const { ChangeColor } = useBackGroundColor();
+  const { changeColor } = useBackGroundColor();
 
   return (
     <>
@@ -27,36 +33,70 @@ const Home: NextPage = () => {
               <S.Img src={imgSrc} />
             ) : (
               <S.Preview
-                style={{ background: `${ChangeColor.getRandomColor()}` }}
+                style={{ background: `${changeColor.getRandomColor()}` }}
               />
             )}
           </S.PreviewBox>
-          <S.TitleBox>
-            <S.Title ColorReversal={titleChange} Shadow={titleShadow}>
-              {titleData.title}
-            </S.Title>
-            <S.SubTitle
-              ColorReversal={titleChange}
-              isBottom={true}
-              Shadow={titleShadow}
-            >
-              {titleData.subtitle}
-            </S.SubTitle>
-            <S.SubTitle
-              ColorReversal={titleChange}
-              isBottom={false}
-              Shadow={titleShadow}
-            >
-              {titleData.category}
-            </S.SubTitle>
-          </S.TitleBox>
+          <S.TitleContainer>
+            {selectComponent === "all" && (
+              <S.TitleBox Top={180}>
+                <Title
+                  titleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  titleShadow={titleShadow}
+                />
+                <SubTitle
+                  isTitleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  isTitleShadow={titleShadow}
+                />
+                <Category
+                  isTitleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  isTitleShadow={titleShadow}
+                />
+              </S.TitleBox>
+            )}
+
+            {selectComponent === "titleCategory" && (
+              <S.TitleBox Top={90}>
+                <Title
+                  titleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  titleShadow={titleShadow}
+                />
+
+                <Category
+                  isTitleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  isTitleShadow={titleShadow}
+                />
+              </S.TitleBox>
+            )}
+
+            {selectComponent === "title" && (
+              <>
+                <Title
+                  titleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  titleShadow={titleShadow}
+                />
+              </>
+            )}
+          </S.TitleContainer>
         </S.PreviewContainer>
         <SideBar
           onChangeTitleColor={toggleTitleChange}
-          onChangeColor={ChangeColor.onChangeColor}
-          onChangeGradient={ChangeColor.onChangeGradient}
+          onChangeColor={changeColor.onChangeColor}
+          onChangeGradient={changeColor.onChangeGradient}
           onChangeTitleShadow={toggleTitleShadow}
           onDownloadThumbnail={onDownloadThumbnail}
+          onRandomColor={changeColor.setRandomColor}
+          randomColor={changeColor.randomColor}
+          onTitleColorPalette={setTitleColorPalette}
+          titleColorPalette={titleColorPalette}
+          onSelectComponent={setSelectComponent}
+          selectComponent={selectComponent}
         />
       </S.MainContainer>
     </>

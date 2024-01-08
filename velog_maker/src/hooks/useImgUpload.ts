@@ -1,5 +1,5 @@
 import { MutableRefObject, useRef } from "react";
-import { ImgSrcAtom } from "../store/Img.store";
+import { ImgSrcAtom } from "../stores/Img.store";
 import { useRecoilState } from "recoil";
 import * as htmlToImage from "html-to-image";
 import { saveAs } from "file-saver";
