@@ -8,17 +8,17 @@ import { Dispatch, SetStateAction } from "react";
 import { useBackGroundColor } from "../../hooks/useColor";
 
 interface SideBarProps {
+  titleColorPalette: string;
+  selectComponent: string;
+  randomColor: string;
+  setRandomColor: Dispatch<SetStateAction<string>>;
+  setTitleColorPalette: Dispatch<SetStateAction<string>>;
+  setSelectComponent: Dispatch<SetStateAction<string>>;
   onChangeColor: () => void;
   onChangeGradient: () => void;
   onChangeTitleColor: () => void;
   onChangeTitleShadow: () => void;
   onDownloadThumbnail: () => void;
-  setRandomColor: Dispatch<SetStateAction<string>>;
-  randomColor: string;
-  setTitleColorPalette: Dispatch<SetStateAction<string>>;
-  titleColorPalette: string;
-  setSelectComponent: Dispatch<SetStateAction<string>>;
-  selectComponent: string;
 }
 
 const SideBar = ({
