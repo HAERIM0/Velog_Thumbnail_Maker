@@ -11,9 +11,9 @@ interface SideBarProps {
   titleColorPalette: string;
   selectComponent: string;
   randomColor: string;
-  setRandomColor: Dispatch<SetStateAction<string>>;
-  setTitleColorPalette: Dispatch<SetStateAction<string>>;
-  setSelectComponent: Dispatch<SetStateAction<SelectComponentType>>;
+  onRandomColor: Dispatch<SetStateAction<string>>;
+  onTitleColorPalette: Dispatch<SetStateAction<string>>;
+  onSelectComponent: Dispatch<SetStateAction<SelectComponentType>>;
   onChangeColor: () => void;
   onChangeGradient: () => void;
   onChangeTitleColor: () => void;
@@ -22,16 +22,16 @@ interface SideBarProps {
 }
 
 const SideBar = ({
+  randomColor,
+  titleColorPalette,
   onChangeColor,
   onChangeGradient,
   onChangeTitleColor,
   onChangeTitleShadow,
   onDownloadThumbnail,
-  setRandomColor,
-  randomColor,
-  setTitleColorPalette,
-  titleColorPalette,
-  setSelectComponent,
+  onRandomColor,
+  onTitleColorPalette,
+  onSelectComponent,
 }: SideBarProps) => {
   const { handleTitleChange, titlePalette, toggleTitlePalette } = useTitle();
   const { onClickImg, imgRef, onUploadImg } = useImgUpload();
@@ -72,7 +72,7 @@ const SideBar = ({
           </S.SelectBox>
           {colorPalette ? (
             <S.PopupContainer>
-              <HexColorPicker color={randomColor} onChange={setRandomColor} />
+              <HexColorPicker color={randomColor} onChange={onRandomColor} />
             </S.PopupContainer>
           ) : null}
 
@@ -101,7 +101,7 @@ const SideBar = ({
           <SelectButton
             width={330}
             padding={25}
-            onClick={() => setSelectComponent("all")}
+            onClick={() => onSelectComponent("all")}
           >
             제목/부제목/분류
           </SelectButton>
@@ -109,7 +109,7 @@ const SideBar = ({
             <SelectButton
               width={160}
               padding={25}
-              onClick={() => setSelectComponent("titleCategory")}
+              onClick={() => onSelectComponent("titleCategory")}
             >
               제목/분류
             </SelectButton>
@@ -117,7 +117,7 @@ const SideBar = ({
             <SelectButton
               width={160}
               padding={0}
-              onClick={() => setSelectComponent("title")}
+              onClick={() => onSelectComponent("title")}
             >
               제목만
             </SelectButton>
@@ -138,7 +138,7 @@ const SideBar = ({
             <S.PopupContainer>
               <HexColorPicker
                 color={titleColorPalette}
-                onChange={setTitleColorPalette}
+                onChange={onTitleColorPalette}
               />
             </S.PopupContainer>
           ) : null}

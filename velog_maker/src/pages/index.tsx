@@ -46,9 +46,9 @@ const Home: NextPage = () => {
                   titleShadow={titleShadow}
                 />
                 <SubTitle
-                  titleChange={titleChange}
+                  isTitleChange={titleChange}
                   titleColorPalette={titleColorPalette}
-                  titleShadow={titleShadow}
+                  isTitleShadow={titleShadow}
                 />
                 <Category
                   isTitleChange={titleChange}
@@ -91,11 +91,11 @@ const Home: NextPage = () => {
           onChangeGradient={changeColor.onChangeGradient}
           onChangeTitleShadow={toggleTitleShadow}
           onDownloadThumbnail={onDownloadThumbnail}
-          setRandomColor={changeColor.setRandomColor}
+          onRandomColor={changeColor.setRandomColor}
           randomColor={changeColor.randomColor}
-          setTitleColorPalette={setTitleColorPalette}
+          onTitleColorPalette={setTitleColorPalette}
           titleColorPalette={titleColorPalette}
-          setSelectComponent={setSelectComponent}
+          onSelectComponent={setSelectComponent}
           selectComponent={selectComponent}
         />
       </S.MainContainer>
