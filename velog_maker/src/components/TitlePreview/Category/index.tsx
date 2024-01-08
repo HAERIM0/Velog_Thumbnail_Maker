@@ -1,17 +1,11 @@
 import { useTitle } from "../../../hooks/useTitle";
 import * as S from "../style";
 
-interface TitleCategoryProps {
-  isTitleChange: boolean;
-  isTitleShadow: boolean;
-  titleColorPalette: string;
-}
-
 const Category = ({
   isTitleChange,
   titleColorPalette,
   isTitleShadow,
-}: TitleCategoryProps) => {
+}: SubTitleProps) => {
   const { titleData } = useTitle();
   return (
     <S.SubTitle

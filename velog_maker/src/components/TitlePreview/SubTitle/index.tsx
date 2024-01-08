@@ -1,23 +1,17 @@
 import { useTitle } from "../../../hooks/useTitle";
 import * as S from "../style";
 
-interface SubTitleProps {
-  titleChange: boolean;
-  titleShadow: boolean;
-  titleColorPalette: string;
-}
-
 const SubTitle = ({
-  titleChange,
+  isTitleChange,
   titleColorPalette,
-  titleShadow,
+  isTitleShadow,
 }: SubTitleProps) => {
   const { titleData } = useTitle();
   return (
     <S.SubTitle
-      ColorReversal={titleChange}
+      ColorReversal={isTitleChange}
       isBottom={true}
-      Shadow={titleShadow}
+      Shadow={isTitleShadow}
       style={{ color: `${titleColorPalette}` }}
     >
       {titleData.subtitle}
