@@ -13,7 +13,7 @@ interface SideBarProps {
   randomColor: string;
   setRandomColor: Dispatch<SetStateAction<string>>;
   setTitleColorPalette: Dispatch<SetStateAction<string>>;
-  setSelectComponent: Dispatch<SetStateAction<string>>;
+  setSelectComponent: Dispatch<SetStateAction<SelectComponentType>>;
   onChangeColor: () => void;
   onChangeGradient: () => void;
   onChangeTitleColor: () => void;
