@@ -51,9 +51,9 @@ const Home: NextPage = () => {
                   titleShadow={titleShadow}
                 />
                 <Category
-                  titleChange={titleChange}
+                  isTitleChange={titleChange}
                   titleColorPalette={titleColorPalette}
-                  titleShadow={titleShadow}
+                  isTitleShadow={titleShadow}
                 />
               </S.TitleBox>
             )}
@@ -67,9 +67,9 @@ const Home: NextPage = () => {
                 />
 
                 <Category
-                  titleChange={titleChange}
+                  isTitleChange={titleChange}
                   titleColorPalette={titleColorPalette}
-                  titleShadow={titleShadow}
+                  isTitleShadow={titleShadow}
                 />
               </S.TitleBox>
             )}
