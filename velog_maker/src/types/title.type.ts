@@ -4,10 +4,13 @@ interface TitleParam {
   category: string;
 }
 
-interface SubTitleProps {
+interface TitleProps {
   isTitleChange: boolean;
   isTitleShadow: boolean;
-  titleColorPalette: string;
+  isBottom?: number;
+  titleColorPalette?: string;
+  children?: React.ReactNode;
+  isFontStyle: boolean;
 }
 
 type SelectComponentType = "all" | "titleCategory" | "title";

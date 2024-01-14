@@ -1,22 +1,17 @@
 import styled from "styled-components";
 
-export const Title = styled.div<{ ColorReversal: boolean; Shadow: boolean }>`
-  font-size: 54px;
-  font-weight: 700;
-  color: ${(props) => (props.ColorReversal ? "black" : "white")};
+interface TitleStyleProps {
+  isBottom?: number;
+  isColorReversal: boolean;
+  isShadow: boolean;
+  isFontStyle: boolean;
+}
 
-  margin-bottom: 25px;
-  text-shadow: ${(props) => (props.Shadow ? "" : "2px 2px 2px gray")};
-`;
+export const Title = styled.div<TitleStyleProps>`
+  font-size: ${(props) => (props.isFontStyle ? "54px" : "24px")};
+  font-weight: ${(props) => (props.isFontStyle ? "700" : "")};
+  color: ${(props) => (props.isColorReversal ? "black" : "white")};
+  margin-bottom: ${(props) => props.isBottom}px;
 
-export const SubTitle = styled.div<{
-  isBottom: boolean;
-  ColorReversal: boolean;
-  Shadow: boolean;
-}>`
-  margin-bottom: ${(props) => (props.isBottom ? "90px" : "-55px")};
-
-  font-size: 24px;
-  color: ${(props) => (props.ColorReversal ? "black" : "white")};
-  text-shadow: ${(props) => (props.Shadow ? "" : "2px 2px 2px gray")};
+  text-shadow: ${(props) => (props.isShadow ? "" : "2px 2px 2px gray")};
 `;

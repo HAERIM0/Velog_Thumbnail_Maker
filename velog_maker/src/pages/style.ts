@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+interface TitleStyleProps {
+  isBottom?: boolean;
+  isColorReversal: boolean;
+  isShadow: boolean;
+}
+
 export const PreviewContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -48,6 +54,16 @@ export const Img = styled.img`
 export const TitleBox = styled.div<{ Top: number }>`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-top: ${(props) => props.Top}px;
   align-items: center;
+`;
+
+export const Title = styled.div<TitleStyleProps>`
+  font-size: 54px;
+  font-weight: 700;
+  color: ${(props) => (props.isColorReversal ? "black" : "white")};
+
+  margin-bottom: 25px;
+  text-shadow: ${(props) => (props.isShadow ? "" : "2px 2px 2px gray")};
 `;

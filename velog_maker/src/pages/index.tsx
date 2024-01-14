@@ -5,9 +5,8 @@ import SideBar from "../components/SideBar";
 import { useTitle } from "../hooks/useTitle";
 import { useImgUpload } from "../hooks/useImgUpload";
 import { useBackGroundColor } from "../hooks/useColor";
-import Title from "../components/TitlePreview/Title";
-import SubTitle from "../components/TitlePreview/SubTitle";
-import Category from "../components/TitlePreview/Category";
+
+import TitlePreview from "../components/TitlePreview";
 
 const Home: NextPage = () => {
   const {
@@ -19,6 +18,7 @@ const Home: NextPage = () => {
     titleColorPalette,
     setSelectComponent,
     selectComponent,
+    titleData,
   } = useTitle();
   const { imgSrc, onDownloadThumbnail, cardRef } = useImgUpload();
   const { changeColor } = useBackGroundColor();
@@ -39,48 +39,71 @@ const Home: NextPage = () => {
           </S.PreviewBox>
           <S.TitleContainer>
             {selectComponent === "all" && (
-              <S.TitleBox Top={180}>
-                <Title
-                  titleChange={titleChange}
-                  titleColorPalette={titleColorPalette}
-                  titleShadow={titleShadow}
-                />
-                <SubTitle
+              <S.TitleBox Top={20}>
+                <TitlePreview
                   isTitleChange={titleChange}
                   titleColorPalette={titleColorPalette}
                   isTitleShadow={titleShadow}
-                />
-                <Category
+                  isFontStyle={true}
+                  isBottom={25}
+                >
+                  {titleData.title}
+                </TitlePreview>
+                <TitlePreview
                   isTitleChange={titleChange}
                   titleColorPalette={titleColorPalette}
                   isTitleShadow={titleShadow}
-                />
+                  isFontStyle={false}
+                  isBottom={90}
+                >
+                  {titleData.subtitle}
+                </TitlePreview>
+                <TitlePreview
+                  isTitleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  isTitleShadow={titleShadow}
+                  isFontStyle={false}
+                  isBottom={-55}
+                >
+                  {titleData.category}
+                </TitlePreview>
               </S.TitleBox>
             )}
 
             {selectComponent === "titleCategory" && (
-              <S.TitleBox Top={90}>
-                <Title
-                  titleChange={titleChange}
-                  titleColorPalette={titleColorPalette}
-                  titleShadow={titleShadow}
-                />
-
-                <Category
+              <S.TitleBox Top={-40}>
+                <TitlePreview
                   isTitleChange={titleChange}
                   titleColorPalette={titleColorPalette}
                   isTitleShadow={titleShadow}
-                />
+                  isFontStyle={true}
+                  isBottom={25}
+                >
+                  {titleData.title}
+                </TitlePreview>
+                <TitlePreview
+                  isTitleChange={titleChange}
+                  titleColorPalette={titleColorPalette}
+                  isTitleShadow={titleShadow}
+                  isFontStyle={false}
+                  isBottom={-55}
+                >
+                  {titleData.category}
+                </TitlePreview>
               </S.TitleBox>
             )}
 
             {selectComponent === "title" && (
               <>
-                <Title
-                  titleChange={titleChange}
+                <TitlePreview
+                  isTitleChange={titleChange}
                   titleColorPalette={titleColorPalette}
-                  titleShadow={titleShadow}
-                />
+                  isTitleShadow={titleShadow}
+                  isFontStyle={true}
+                  isBottom={25}
+                >
+                  {titleData.title}
+                </TitlePreview>
               </>
             )}
           </S.TitleContainer>
