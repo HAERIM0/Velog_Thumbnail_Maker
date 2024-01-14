@@ -23,6 +23,80 @@ const Home: NextPage = () => {
   const { imgSrc, onDownloadThumbnail, cardRef } = useImgUpload();
   const { changeColor } = useBackGroundColor();
 
+  let selectedComponent;
+  switch (selectComponent) {
+    case "all":
+      selectedComponent = (
+        <S.TitleBox Top={20}>
+          <TitlePreview
+            isTitleChange={titleChange}
+            titleColorPalette={titleColorPalette}
+            isTitleShadow={titleShadow}
+            isFontStyle={true}
+            isBottom={25}
+          >
+            {titleData.title}
+          </TitlePreview>
+          <TitlePreview
+            isTitleChange={titleChange}
+            titleColorPalette={titleColorPalette}
+            isTitleShadow={titleShadow}
+            isFontStyle={false}
+            isBottom={90}
+          >
+            {titleData.subtitle}
+          </TitlePreview>
+          <TitlePreview
+            isTitleChange={titleChange}
+            titleColorPalette={titleColorPalette}
+            isTitleShadow={titleShadow}
+            isFontStyle={false}
+            isBottom={-55}
+          >
+            {titleData.category}
+          </TitlePreview>
+        </S.TitleBox>
+      );
+      break;
+    case "titleCategory":
+      selectedComponent = (
+        <S.TitleBox Top={-40}>
+          <TitlePreview
+            isTitleChange={titleChange}
+            titleColorPalette={titleColorPalette}
+            isTitleShadow={titleShadow}
+            isFontStyle={true}
+            isBottom={25}
+          >
+            {titleData.title}
+          </TitlePreview>
+          <TitlePreview
+            isTitleChange={titleChange}
+            titleColorPalette={titleColorPalette}
+            isTitleShadow={titleShadow}
+            isFontStyle={false}
+            isBottom={-55}
+          >
+            {titleData.category}
+          </TitlePreview>
+        </S.TitleBox>
+      );
+      break;
+    case "title":
+      selectedComponent = (
+        <TitlePreview
+          isTitleChange={titleChange}
+          titleColorPalette={titleColorPalette}
+          isTitleShadow={titleShadow}
+          isFontStyle={true}
+          isBottom={25}
+        >
+          {titleData.title}
+        </TitlePreview>
+      );
+      break;
+  }
+
   return (
     <>
       <Header />
@@ -37,76 +111,7 @@ const Home: NextPage = () => {
               />
             )}
           </S.PreviewBox>
-          <S.TitleContainer>
-            {selectComponent === "all" && (
-              <S.TitleBox Top={20}>
-                <TitlePreview
-                  isTitleChange={titleChange}
-                  titleColorPalette={titleColorPalette}
-                  isTitleShadow={titleShadow}
-                  isFontStyle={true}
-                  isBottom={25}
-                >
-                  {titleData.title}
-                </TitlePreview>
-                <TitlePreview
-                  isTitleChange={titleChange}
-                  titleColorPalette={titleColorPalette}
-                  isTitleShadow={titleShadow}
-                  isFontStyle={false}
-                  isBottom={90}
-                >
-                  {titleData.subtitle}
-                </TitlePreview>
-                <TitlePreview
-                  isTitleChange={titleChange}
-                  titleColorPalette={titleColorPalette}
-                  isTitleShadow={titleShadow}
-                  isFontStyle={false}
-                  isBottom={-55}
-                >
-                  {titleData.category}
-                </TitlePreview>
-              </S.TitleBox>
-            )}
-
-            {selectComponent === "titleCategory" && (
-              <S.TitleBox Top={-40}>
-                <TitlePreview
-                  isTitleChange={titleChange}
-                  titleColorPalette={titleColorPalette}
-                  isTitleShadow={titleShadow}
-                  isFontStyle={true}
-                  isBottom={25}
-                >
-                  {titleData.title}
-                </TitlePreview>
-                <TitlePreview
-                  isTitleChange={titleChange}
-                  titleColorPalette={titleColorPalette}
-                  isTitleShadow={titleShadow}
-                  isFontStyle={false}
-                  isBottom={-55}
-                >
-                  {titleData.category}
-                </TitlePreview>
-              </S.TitleBox>
-            )}
-
-            {selectComponent === "title" && (
-              <>
-                <TitlePreview
-                  isTitleChange={titleChange}
-                  titleColorPalette={titleColorPalette}
-                  isTitleShadow={titleShadow}
-                  isFontStyle={true}
-                  isBottom={25}
-                >
-                  {titleData.title}
-                </TitlePreview>
-              </>
-            )}
-          </S.TitleContainer>
+          <S.TitleContainer>{selectedComponent}</S.TitleContainer>
         </S.PreviewContainer>
         <SideBar
           onChangeTitleColor={toggleTitleChange}
