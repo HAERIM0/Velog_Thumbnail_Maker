@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonContainer = styled.div<{ padding: number }>`
+export const ButtonContainer = styled.div<{ padding?: number }>`
   padding-left: ${(props) => props.padding}px;
 `;
 export const SelectButton = styled.button<{ color?: boolean }>`

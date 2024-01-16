@@ -4,7 +4,7 @@ export const SideBarContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  margin-top: 55px;
+  margin-top: 60px;
 `;
 
 export const SideBarWrapper = styled.div`
@@ -28,11 +28,16 @@ export const Title = styled.label`
 `;
 
 export const SideBarItem = styled.div`
-  margin-top: 20px;
+  margin-top: 30px;
 `;
 
 export const SelectBox = styled.div`
   display: flex;
   gap: 10px;
   margin-bottom: 15px;
+`;
+
+export const PopupContainer = styled.div`
+  position: absolute;
+  padding-left: 25px;
 `;

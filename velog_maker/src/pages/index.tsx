@@ -6,16 +6,94 @@ import { useTitle } from "../hooks/useTitle";
 import { useImgUpload } from "../hooks/useImgUpload";
 import { useBackGroundColor } from "../hooks/useColor";
 
+import TitlePreview from "../components/TitlePreview";
+
 const Home: NextPage = () => {
   const {
-    titleData,
     titleChange,
     titleShadow,
     toggleTitleChange,
     toggleTitleShadow,
+    setTitleColorPalette,
+    titleColorPalette,
+    setSelectComponent,
+    selectComponent,
+    titleData,
   } = useTitle();
   const { imgSrc, onDownloadThumbnail, cardRef } = useImgUpload();
-  const { ChangeColor } = useBackGroundColor();
+  const { changeColor } = useBackGroundColor();
+
+  const selectedComponent = () => {
+    switch (selectComponent) {
+      case "all":
+        return (
+          <S.TitleBox Top={20}>
+            <TitlePreview
+              isTitleChange={titleChange}
+              titleColorPalette={titleColorPalette}
+              isTitleShadow={titleShadow}
+              isFontStyle={true}
+              isBottom={25}
+            >
+              {titleData.title}
+            </TitlePreview>
+            <TitlePreview
+              isTitleChange={titleChange}
+              titleColorPalette={titleColorPalette}
+              isTitleShadow={titleShadow}
+              isFontStyle={false}
+              isBottom={90}
+            >
+              {titleData.subtitle}
+            </TitlePreview>
+            <TitlePreview
+              isTitleChange={titleChange}
+              titleColorPalette={titleColorPalette}
+              isTitleShadow={titleShadow}
+              isFontStyle={false}
+              isBottom={-55}
+            >
+              {titleData.category}
+            </TitlePreview>
+          </S.TitleBox>
+        );
+      case "titleCategory":
+        return (
+          <S.TitleBox Top={-40}>
+            <TitlePreview
+              isTitleChange={titleChange}
+              titleColorPalette={titleColorPalette}
+              isTitleShadow={titleShadow}
+              isFontStyle={true}
+              isBottom={25}
+            >
+              {titleData.title}
+            </TitlePreview>
+            <TitlePreview
+              isTitleChange={titleChange}
+              titleColorPalette={titleColorPalette}
+              isTitleShadow={titleShadow}
+              isFontStyle={false}
+              isBottom={-55}
+            >
+              {titleData.category}
+            </TitlePreview>
+          </S.TitleBox>
+        );
+      case "title":
+        return (
+          <TitlePreview
+            isTitleChange={titleChange}
+            titleColorPalette={titleColorPalette}
+            isTitleShadow={titleShadow}
+            isFontStyle={true}
+            isBottom={25}
+          >
+            {titleData.title}
+          </TitlePreview>
+        );
+    }
+  };
 
   return (
     <>
@@ -27,36 +105,24 @@ const Home: NextPage = () => {
               <S.Img src={imgSrc} />
             ) : (
               <S.Preview
-                style={{ background: `${ChangeColor.getRandomColor()}` }}
+                style={{ background: `${changeColor.getRandomColor()}` }}
               />
             )}
           </S.PreviewBox>
-          <S.TitleBox>
-            <S.Title ColorReversal={titleChange} Shadow={titleShadow}>
-              {titleData.title}
-            </S.Title>
-            <S.SubTitle
-              ColorReversal={titleChange}
-              isBottom={true}
-              Shadow={titleShadow}
-            >
-              {titleData.subtitle}
-            </S.SubTitle>
-            <S.SubTitle
-              ColorReversal={titleChange}
-              isBottom={false}
-              Shadow={titleShadow}
-            >
-              {titleData.category}
-            </S.SubTitle>
-          </S.TitleBox>
+          <S.TitleContainer>{selectedComponent()}</S.TitleContainer>
         </S.PreviewContainer>
         <SideBar
           onChangeTitleColor={toggleTitleChange}
-          onChangeColor={ChangeColor.onChangeColor}
-          onChangeGradient={ChangeColor.onChangeGradient}
+          onChangeColor={changeColor.onChangeColor}
+          onChangeGradient={changeColor.onChangeGradient}
           onChangeTitleShadow={toggleTitleShadow}
           onDownloadThumbnail={onDownloadThumbnail}
+          onRandomColor={changeColor.setRandomColor}
+          randomColor={changeColor.randomColor}
+          onTitleColorPalette={setTitleColorPalette}
+          titleColorPalette={titleColorPalette}
+          onSelectComponent={setSelectComponent}
+          selectComponent={selectComponent}
         />
       </S.MainContainer>
     </>

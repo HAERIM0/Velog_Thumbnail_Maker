@@ -3,7 +3,7 @@ import * as S from "./style";
 interface SelectButtonProps {
   children: React.ReactNode;
   width: number;
-  padding: number;
+  padding?: number;
   backgroundColor?: string;
   color?: string;
   onClick?: (e: React.FormEvent) => void;
