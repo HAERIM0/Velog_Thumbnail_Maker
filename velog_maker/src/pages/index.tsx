@@ -23,11 +23,65 @@ const Home: NextPage = () => {
   const { imgSrc, onDownloadThumbnail, cardRef } = useImgUpload();
   const { changeColor } = useBackGroundColor();
 
-  let selectedComponent;
-  switch (selectComponent) {
-    case "all":
-      selectedComponent = (
-        <S.TitleBox Top={20}>
+  const selectedComponent = () => {
+    switch (selectComponent) {
+      case "all":
+        return (
+          <S.TitleBox Top={20}>
+            <TitlePreview
+              isTitleChange={titleChange}
+              titleColorPalette={titleColorPalette}
+              isTitleShadow={titleShadow}
+              isFontStyle={true}
+              isBottom={25}
+            >
+              {titleData.title}
+            </TitlePreview>
+            <TitlePreview
+              isTitleChange={titleChange}
+              titleColorPalette={titleColorPalette}
+              isTitleShadow={titleShadow}
+              isFontStyle={false}
+              isBottom={90}
+            >
+              {titleData.subtitle}
+            </TitlePreview>
+            <TitlePreview
+              isTitleChange={titleChange}
+              titleColorPalette={titleColorPalette}
+              isTitleShadow={titleShadow}
+              isFontStyle={false}
+              isBottom={-55}
+            >
+              {titleData.category}
+            </TitlePreview>
+          </S.TitleBox>
+        );
+      case "titleCategory":
+        return (
+          <S.TitleBox Top={-40}>
+            <TitlePreview
+              isTitleChange={titleChange}
+              titleColorPalette={titleColorPalette}
+              isTitleShadow={titleShadow}
+              isFontStyle={true}
+              isBottom={25}
+            >
+              {titleData.title}
+            </TitlePreview>
+            <TitlePreview
+              isTitleChange={titleChange}
+              titleColorPalette={titleColorPalette}
+              isTitleShadow={titleShadow}
+              isFontStyle={false}
+              isBottom={-55}
+            >
+              {titleData.category}
+            </TitlePreview>
+          </S.TitleBox>
+        );
+      case "title":
+        return (
           <TitlePreview
             isTitleChange={titleChange}
             titleColorPalette={titleColorPalette}
@@ -37,65 +91,9 @@ const Home: NextPage = () => {
           >
             {titleData.title}
           </TitlePreview>
-          <TitlePreview
-            isTitleChange={titleChange}
-            titleColorPalette={titleColorPalette}
-            isTitleShadow={titleShadow}
-            isFontStyle={false}
-            isBottom={90}
-          >
-            {titleData.subtitle}
-          </TitlePreview>
-          <TitlePreview
-            isTitleChange={titleChange}
-            titleColorPalette={titleColorPalette}
-            isTitleShadow={titleShadow}
-            isFontStyle={false}
-            isBottom={-55}
-          >
-            {titleData.category}
-          </TitlePreview>
-        </S.TitleBox>
-      );
-      break;
-    case "titleCategory":
-      selectedComponent = (
-        <S.TitleBox Top={-40}>
-          <TitlePreview
-            isTitleChange={titleChange}
-            titleColorPalette={titleColorPalette}
-            isTitleShadow={titleShadow}
-            isFontStyle={true}
-            isBottom={25}
-          >
-            {titleData.title}
-          </TitlePreview>
-          <TitlePreview
-            isTitleChange={titleChange}
-            titleColorPalette={titleColorPalette}
-            isTitleShadow={titleShadow}
-            isFontStyle={false}
-            isBottom={-55}
-          >
-            {titleData.category}
-          </TitlePreview>
-        </S.TitleBox>
-      );
-      break;
-    case "title":
-      selectedComponent = (
-        <TitlePreview
-          isTitleChange={titleChange}
-          titleColorPalette={titleColorPalette}
-          isTitleShadow={titleShadow}
-          isFontStyle={true}
-          isBottom={25}
-        >
-          {titleData.title}
-        </TitlePreview>
-      );
-      break;
-  }
+        );
+    }
+  };
 
   return (
     <>
@@ -111,7 +109,7 @@ const Home: NextPage = () => {
               />
             )}
           </S.PreviewBox>
-          <S.TitleContainer>{selectedComponent}</S.TitleContainer>
+          <S.TitleContainer>{selectedComponent()}</S.TitleContainer>
         </S.PreviewContainer>
         <SideBar
           onChangeTitleColor={toggleTitleChange}

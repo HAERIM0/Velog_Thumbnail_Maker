@@ -66,7 +66,7 @@ const SideBar = ({
             >
               랜덤 단색
             </SelectButton>
-            <SelectButton width={160} padding={0} onClick={toggleColorPalette}>
+            <SelectButton width={160} onClick={toggleColorPalette}>
               단색
             </SelectButton>
           </S.SelectBox>
@@ -116,7 +116,6 @@ const SideBar = ({
 
             <SelectButton
               width={160}
-              padding={0}
               onClick={() => onSelectComponent("title")}
             >
               제목만
@@ -130,7 +129,7 @@ const SideBar = ({
             <SelectButton width={160} padding={25} onClick={toggleTitlePalette}>
               색상
             </SelectButton>
-            <SelectButton width={160} padding={0} onClick={onChangeTitleShadow}>
+            <SelectButton width={160} onClick={onChangeTitleShadow}>
               그림자
             </SelectButton>
           </S.SelectBox>
@@ -154,7 +153,6 @@ const SideBar = ({
             </SelectButton>
             <SelectButton
               width={160}
-              padding={0}
               backgroundColor="#626262"
               color="white"
               onClick={onDownloadThumbnail}
